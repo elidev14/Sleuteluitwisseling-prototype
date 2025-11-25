@@ -1,10 +1,4 @@
 ﻿  asymmetrisch sleuteluitwisseling.cpp
-D:\Github_Projects\School\Sleuteluitwisseling-prototype\asymmetrisch sleuteluitwisseling\asymmetrisch sleuteluitwisseling.cpp(23,48): error C4996: 'RSA_size': Since OpenSSL 3.0
-D:\Github_Projects\School\Sleuteluitwisseling-prototype\asymmetrisch sleuteluitwisseling\asymmetrisch sleuteluitwisseling.cpp(24,3): error C4996: 'RSA_public_encrypt': Since OpenSSL 3.0
-D:\Github_Projects\School\Sleuteluitwisseling-prototype\asymmetrisch sleuteluitwisseling\asymmetrisch sleuteluitwisseling.cpp(31,3): error C4996: 'RSA_private_decrypt': Since OpenSSL 3.0
-D:\Github_Projects\School\Sleuteluitwisseling-prototype\asymmetrisch sleuteluitwisseling\asymmetrisch sleuteluitwisseling.cpp(41,18): error C2440: 'initializing': cannot convert from 'EVP_PKEY *' to 'RSA *'
-      D:\Github_Projects\School\Sleuteluitwisseling-prototype\asymmetrisch sleuteluitwisseling\asymmetrisch sleuteluitwisseling.cpp(41,18):
-      Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
-  
-D:\Github_Projects\School\Sleuteluitwisseling-prototype\asymmetrisch sleuteluitwisseling\asymmetrisch sleuteluitwisseling.cpp(48,2): error C3861: 'RAND_bytes': identifier not found
-D:\Github_Projects\School\Sleuteluitwisseling-prototype\asymmetrisch sleuteluitwisseling\asymmetrisch sleuteluitwisseling.cpp(44,19): error C4996: 'RSAPublicKey_dup': Since OpenSSL 3.0
+  asymmetrisch sleuteluitwisseling.vcxproj -> D:\Github_Projects\School\Sleuteluitwisseling-prototype\x64\Debug\asymmetrisch sleuteluitwisseling.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.

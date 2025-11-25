@@ -20,9 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="preshared_key.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DiffieHellman.h">
       <Filter>Header Files</Filter>
     </ClInclude>

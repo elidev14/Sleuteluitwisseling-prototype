@@ -1,55 +1,89 @@
-// symmetrisch sleuteluitwisseling.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
-#include <openssl/aes.h>
-#include <openssl/rand.h>
 #include <iostream>
 #include <chrono>
-#include "preshared_key.h"
+#include <openssl/rand.h>
+#include <openssl/bn.h>
 #include "DiffieHellman.h"
 
 
+typedef std::chrono::microseconds microseconds;
+
+class TimeMeasure {
+private:
+	microseconds total{ 0 };
+	std::chrono::high_resolution_clock::time_point start;
+
+public:
+	TimeMeasure() {
+		resetEvent();
+	}
+
+	void resetEvent() {
+		start = std::chrono::high_resolution_clock::now();
+	}
+
+	microseconds endEvent() {
+		auto end = std::chrono::high_resolution_clock::now();
+		microseconds duration = std::chrono::duration_cast<microseconds>(end - start);
+		total += duration;
+		return duration;
+	}
+
+	microseconds getTotal() const {
+		return total;
+	}
+};
+
+
+// Geen AES sleutel wordt ooit verstuurd
+// twee partijen zelf een gedeelde sleutel.
+// alleen geschikt als beide partijen gelijktijdig communiceren en private keys geheim blijven.
+// Een plus is dat het een snelle execurtie heeft
 
 int main() {
 
+	TimeMeasure tm;
 
-	// Pre shared key methode: Het probleem hier is hoe ze nou aan de key komen
-	unsigned char key[32];
-	RAND_bytes(key, 32);
-
-	preshared_key pA(key);
-	preshared_key pB(key);
-
-	// Nu kunnen ze communiceren
-	pA.send_message("Hallo Robot B");
-
-
-	// DiffieHellman methode
 	DiffieHellman DH_pA, DH_pB;
 
-	// Beide genereren keypair
+	// Keypair generatie
+	tm.resetEvent();
 	DH_pA.generate_keypair();
 	DH_pB.generate_keypair();
+	microseconds genTime = tm.endEvent();
 
-	// keys uitwisselen
-	auto keypA = DH_pA.get_public_key();
-	auto keypB = DH_pB.get_public_key();
+	std::cout << "keypairs gegenereerd in: "
+		<< genTime.count() << " microseconden\n";
 
-	// Stap 3: Beide berekenen ZELFDE shared secret
-	auto secretA = DH_pA.compute_shared_secret(keypA);
-	auto secretB = DH_pB.compute_shared_secret(keypB);
+	// Public key exchange
+	BIGNUM* pubA = DH_pA.get_public_key();
+	BIGNUM* pubB = DH_pB.get_public_key();
 
+	// Shared secret berekenen
+	size_t secretA_len, secretB_len;
 
-	std::cout << "Robot A en B hebben nu dezelfde AES sleutel zonder deze te versturen!" << std::endl;
+	tm.resetEvent();
+	unsigned char* secretA = DH_pA.compute_shared_secret(pubB, secretA_len);
+	microseconds compATime = tm.endEvent();
+
+	tm.resetEvent();
+	unsigned char* secretB = DH_pB.compute_shared_secret(pubA, secretB_len);
+	microseconds compBTime = tm.endEvent();
+
+	std::cout << "Shared secret berekend in:\n";
+	std::cout << "  Alice: " << compATime.count() << " microseconden\n";
+	std::cout << "  Bob:   " << compBTime.count() << " microseconden\n";
+
+	// Verify
+	if (secretA_len == secretB_len && memcmp(secretA, secretB, secretA_len) == 0)
+		std::cout << "\nAlice en Bob hebben dezelfde gedeelde sleutel\n";
+	else
+		std::cout << "\nSleutels komen niet overeen\n";
+
+	std::cout << "\nTotale tijd : "
+		<< tm.getTotal().count() << " microseconden\n";
+
+	OPENSSL_free(secretA);
+	OPENSSL_free(secretB);
+
+	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

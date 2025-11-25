@@ -13,10 +13,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F8E794BC-E785-4ABD-A8C1-8FC3BB75FE6D}|symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\DiffieHellman.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8E794BC-E785-4ABD-A8C1-8FC3BB75FE6D}|symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.vcxproj|solutionrelative:symmetrisch sleuteluitwisseling\\DiffieHellman.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8E794BC-E785-4ABD-A8C1-8FC3BB75FE6D}|symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\preshared_key.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8E794BC-E785-4ABD-A8C1-8FC3BB75FE6D}|symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.vcxproj|solutionrelative:symmetrisch sleuteluitwisseling\\preshared_key.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,7 +32,7 @@
               "RelativeDocumentMoniker": "asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.cpp",
               "ToolTip": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.cpp",
               "RelativeToolTip": "asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.cpp",
-              "ViewState": "AgIAAAcAAAAAAAAAAAArwBEAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAAAKQAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-24T23:11:34.601Z",
               "EditorCaption": ""
@@ -49,23 +45,9 @@
               "RelativeDocumentMoniker": "symmetrisch sleuteluitwisseling\\DiffieHellman.h",
               "ToolTip": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\DiffieHellman.h",
               "RelativeToolTip": "symmetrisch sleuteluitwisseling\\DiffieHellman.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAFsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-24T23:06:52.77Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "preshared_key.h",
-              "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\preshared_key.h",
-              "RelativeDocumentMoniker": "symmetrisch sleuteluitwisseling\\preshared_key.h",
-              "ToolTip": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\preshared_key.h",
-              "RelativeToolTip": "symmetrisch sleuteluitwisseling\\preshared_key.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-24T23:04:57.779Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-24T23:06:52.77Z"
             },
             {
               "$type": "Document",
@@ -75,10 +57,9 @@
               "RelativeDocumentMoniker": "symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp",
               "ToolTip": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp",
               "RelativeToolTip": "symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp",
-              "ViewState": "AgIAABIAAAAAAAAAAAAkwCcAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-24T19:19:27.308Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-24T19:19:27.308Z"
             }
           ]
         }

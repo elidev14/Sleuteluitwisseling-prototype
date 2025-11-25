@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1AF3535E-25AF-4355-B444-B0815BCFDB35}|asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{1AF3535E-25AF-4355-B444-B0815BCFDB35}|asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.vcxproj|solutionrelative:asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F8E794BC-E785-4ABD-A8C1-8FC3BB75FE6D}|symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\DiffieHellman.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8E794BC-E785-4ABD-A8C1-8FC3BB75FE6D}|symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.vcxproj|solutionrelative:symmetrisch sleuteluitwisseling\\DiffieHellman.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8E794BC-E785-4ABD-A8C1-8FC3BB75FE6D}|symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8E794BC-E785-4ABD-A8C1-8FC3BB75FE6D}|symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.vcxproj|solutionrelative:symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8E794BC-E785-4ABD-A8C1-8FC3BB75FE6D}|symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\DiffieHellman.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8E794BC-E785-4ABD-A8C1-8FC3BB75FE6D}|symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.vcxproj|solutionrelative:symmetrisch sleuteluitwisseling\\DiffieHellman.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{1AF3535E-25AF-4355-B444-B0815BCFDB35}|asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1AF3535E-25AF-4355-B444-B0815BCFDB35}|asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.vcxproj|solutionrelative:asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,30 +22,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "asymmetrisch sleuteluitwisseling.cpp",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.cpp",
               "RelativeDocumentMoniker": "asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.cpp",
               "ToolTip": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.cpp",
               "RelativeToolTip": "asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.cpp",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-24T23:11:34.601Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "DiffieHellman.h",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\DiffieHellman.h",
               "RelativeDocumentMoniker": "symmetrisch sleuteluitwisseling\\DiffieHellman.h",
               "ToolTip": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\DiffieHellman.h",
               "RelativeToolTip": "symmetrisch sleuteluitwisseling\\DiffieHellman.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-11-24T23:06:52.77Z",
               "EditorCaption": ""
@@ -58,7 +58,7 @@
               "RelativeDocumentMoniker": "symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp",
               "ToolTip": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp",
               "RelativeToolTip": "symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAUwB0AAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAUwEcAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-24T19:19:27.308Z",
               "EditorCaption": ""
