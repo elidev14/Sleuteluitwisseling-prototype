@@ -11,7 +11,7 @@
 
 using namespace std::chrono_literals;
 
-class AsymmetricKeyExchange {
+class AsymmetricKeyxchange {
 public:
 
     // Bob genereert RSA keypair (2048 bits)
