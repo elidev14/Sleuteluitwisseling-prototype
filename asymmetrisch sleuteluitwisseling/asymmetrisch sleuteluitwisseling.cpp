@@ -8,104 +8,79 @@
 #include <cstring>
 #include <iostream>
 #include <chrono>
+#include "TimeMeasure.h"
 
 using namespace std::chrono_literals;
 
-class AsymmetricKeyxchange {
+class AsymmetricKeyExchange {
 public:
 
-    // Bob genereert RSA keypair (2048 bits)
-    EVP_PKEY* generate_rsa_keypair() {
-        EVP_PKEY* rsaKey = EVP_RSA_gen(2048);
-        return rsaKey;
-    }
+	// Bob genereert RSA keypair (2048 bits)
+	EVP_PKEY* generate_rsa_keypair() {
+		EVP_PKEY* rsaKey = EVP_RSA_gen(2048);
+		return rsaKey;
+	}
 
-    // Alice encrypt aes sleutel met publieke RSA sleutel van bob
-    unsigned char* encrypt_aes_key(EVP_PKEY* publicKey, unsigned char* aes_key, size_t& out_len) {
+	// Alice encrypt aes sleutel met publieke RSA sleutel van bob
+	unsigned char* encrypt_aes_key(EVP_PKEY* publicKey, unsigned char* aes_key, size_t& out_len) {
 
 		//Zet de publieke sleutel om naar context
-        EVP_PKEY_CTX* ctx = EVP_PKEY_CTX_new(publicKey, nullptr);
-        if (!ctx) return nullptr;
+		EVP_PKEY_CTX* ctx = EVP_PKEY_CTX_new(publicKey, nullptr);
+		if (!ctx) return nullptr;
 
 
-        if (EVP_PKEY_encrypt_init(ctx) <= 0) return nullptr;
+		if (EVP_PKEY_encrypt_init(ctx) <= 0) return nullptr;
 
-        // RSA OAEP
-        EVP_PKEY_CTX_set_rsa_padding(ctx, RSA_PKCS1_OAEP_PADDING);
+		// RSA OAEP
+		EVP_PKEY_CTX_set_rsa_padding(ctx, RSA_PKCS1_OAEP_PADDING);
 
-        // Eerst output length bepalen
-        EVP_PKEY_encrypt(ctx, nullptr, &out_len, aes_key, 32);
+		// Eerst output length bepalen
+		EVP_PKEY_encrypt(ctx, nullptr, &out_len, aes_key, 32);
 
-        unsigned char* encrypted = (unsigned char*)OPENSSL_malloc(out_len);
+		unsigned char* encrypted = (unsigned char*)OPENSSL_malloc(out_len);
 
-        // De encryptie
-        if (EVP_PKEY_encrypt(ctx, encrypted, &out_len, aes_key, 32) <= 0) {
-            EVP_PKEY_CTX_free(ctx);
-            OPENSSL_free(encrypted);
-            return nullptr;
-        }
+		// De encryptie
+		if (EVP_PKEY_encrypt(ctx, encrypted, &out_len, aes_key, 32) <= 0) {
+			EVP_PKEY_CTX_free(ctx);
+			OPENSSL_free(encrypted);
+			return nullptr;
+		}
 
-        EVP_PKEY_CTX_free(ctx);
-        return encrypted;
-    }
+		EVP_PKEY_CTX_free(ctx);
+		return encrypted;
+	}
 
-    // Bob decrypt met prive sleutel
-    unsigned char* decrypt_aes_key(EVP_PKEY* privateKey, unsigned char* encrypted, size_t encrypted_len) {
+	// Bob decrypt met prive sleutel
+	unsigned char* decrypt_aes_key(EVP_PKEY* privateKey, unsigned char* encrypted, size_t encrypted_len) {
 
-        EVP_PKEY_CTX* ctx = EVP_PKEY_CTX_new(privateKey, nullptr);
-        if (!ctx) return nullptr;
+		EVP_PKEY_CTX* ctx = EVP_PKEY_CTX_new(privateKey, nullptr);
+		if (!ctx) return nullptr;
 
-        if (EVP_PKEY_decrypt_init(ctx) <= 0) return nullptr;
+		if (EVP_PKEY_decrypt_init(ctx) <= 0) return nullptr;
 
-        EVP_PKEY_CTX_set_rsa_padding(ctx, RSA_PKCS1_OAEP_PADDING);
+		EVP_PKEY_CTX_set_rsa_padding(ctx, RSA_PKCS1_OAEP_PADDING);
 
-        size_t out_len = 0;
+		size_t out_len = 0;
 
-        // lengte bepalen
-        EVP_PKEY_decrypt(ctx, nullptr, &out_len, encrypted, encrypted_len);
+		// lengte bepalen
+		EVP_PKEY_decrypt(ctx, nullptr, &out_len, encrypted, encrypted_len);
 
-        unsigned char* decrypted = (unsigned char*)OPENSSL_malloc(out_len);
+		unsigned char* decrypted = (unsigned char*)OPENSSL_malloc(out_len);
 
-        if (EVP_PKEY_decrypt(ctx, decrypted, &out_len, encrypted, encrypted_len) <= 0) {
-            EVP_PKEY_CTX_free(ctx);
-            OPENSSL_free(decrypted);
-            return nullptr;
-        }
+		if (EVP_PKEY_decrypt(ctx, decrypted, &out_len, encrypted, encrypted_len) <= 0) {
+			EVP_PKEY_CTX_free(ctx);
+			OPENSSL_free(decrypted);
+			return nullptr;
+		}
 
-        EVP_PKEY_CTX_free(ctx);
-        return decrypted;
-    }
+		EVP_PKEY_CTX_free(ctx);
+		return decrypted;
+	}
 };
-
-typedef std::chrono::microseconds microseconds;
 
 
 // Klasse om tijd te meten want anders wordt de code onoverzichtelijk
-class TimeMeasure {
-private:
-	microseconds total{ 0 };
-	std::chrono::high_resolution_clock::time_point start;
 
-public:
-	TimeMeasure() {
-		resetEvent();
-	}
-
-	void resetEvent() {
-		start = std::chrono::high_resolution_clock::now();
-	}
-
-	microseconds endEvent() {
-		auto end = std::chrono::high_resolution_clock::now();
-		microseconds duration = std::chrono::duration_cast<microseconds>(end - start);
-		total += duration;
-		return duration;
-	}
-
-	microseconds getTotal() const {
-		return total;
-	}
-};
 
 
 // Werkt ook als je niet gelijktijdig bent, omdat de aes sleutel expliciet verstuurd wordt.
@@ -115,7 +90,7 @@ int main() {
 
 	AsymmetricKeyExchange exchange;
 
-	TimeMeasure tm;  
+	TimeMeasure tm;
 
 	std::cout << "Bob genereert RSA keypair...\n";
 

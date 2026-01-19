@@ -1,0 +1,5 @@
+﻿  ServerController.cpp
+C:\Users\elija\OneDrive - Avans Hogeschool\lj2\Onderzoeksproject infrastrucuur\Sleuteluitwisseling\Sleuteluitwisseling-prototype\ServerController\ServerController.cpp(65,24): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  ServerController.vcxproj -> C:\Users\elija\OneDrive - Avans Hogeschool\lj2\Onderzoeksproject infrastrucuur\Sleuteluitwisseling\Sleuteluitwisseling-prototype\x64\Debug\ServerController.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.

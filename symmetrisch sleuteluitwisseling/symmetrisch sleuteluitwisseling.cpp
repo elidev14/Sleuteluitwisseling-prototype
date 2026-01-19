@@ -6,8 +6,8 @@
 #include "ECDHKeyExchange.h"
 
 
-// #define USE_ECDH         // ECDH testen
-// #define USE_CLASSIC_DH // klassieke Diffie-Hellman testen
+//#define USE_ECDH         // ECDH testen
+#define USE_CLASSIC_DH // klassieke Diffie-Hellman testen
 
 typedef std::chrono::microseconds microseconds;
 
@@ -140,5 +140,6 @@ int main() {
 
 #endif
 
+	std::cin.get();
 	return 0;
 }
