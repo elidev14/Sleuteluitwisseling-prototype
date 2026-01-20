@@ -1,11 +1,6 @@
-﻿  ClientHandler.cpp
-D:\Github_Projects\School\Sleuteluitwisseling-prototype\asymmetrisch sleuteluitwisseling\ClientHandler.cpp(44,36): warning C4477: 'snprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'const std::string'
-D:\Github_Projects\School\Sleuteluitwisseling-prototype\asymmetrisch sleuteluitwisseling\ClientHandler.cpp(46,28): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  asymmetrisch sleuteluitwisseling.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\ranges(11): warning STL4038: The contents of <ranges> are available only with C++20 or later.
-D:\Github_Projects\School\Sleuteluitwisseling-prototype\asymmetrisch sleuteluitwisseling\asymmetrisch sleuteluitwisseling.cpp(108,37): warning C4477: 'snprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'std::string'
-D:\Github_Projects\School\Sleuteluitwisseling-prototype\asymmetrisch sleuteluitwisseling\asymmetrisch sleuteluitwisseling.cpp(111,32): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
-  asymmetrisch sleuteluitwisseling.vcxproj -> D:\Github_Projects\School\Sleuteluitwisseling-prototype\x64\Debug\asymmetrisch sleuteluitwisseling.exe
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(538,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (asymmetrisch sleuteluitwisseling.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Sleuteluitwisseling.cpp
+D:\Github_Projects\School\Sleuteluitwisseling-prototype\asymmetrisch sleuteluitwisseling\Sleuteluitwisseling.cpp(87,34): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  asymmetrisch sleuteluitwisseling.vcxproj -> D:\Github_Projects\School\Sleuteluitwisseling-prototype\x64\Debug\Sleuteluitwisseling.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

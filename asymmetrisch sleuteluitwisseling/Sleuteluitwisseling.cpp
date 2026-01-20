@@ -7,11 +7,10 @@
 #include "TimeMeasure.h"
 #include "ECDHKeyExchange.h"
 #include <winsock2.h>
-#include <ws2tcpip.h>
 #include <string>
 #include <thread>
 #include <windows.h>
-#include <ranges>
+#include <format>
 #include <algorithm>
 #include "ClientHandler.h"
 
@@ -38,22 +37,69 @@ bool IsRobotSet = false;
 
 struct UserData {
 	std::string username;
+	int amount;
+};
+
+struct ClientContext {
+	SOCKET socket;
+	std::jthread thread;
 };
 
 UserData SetupRobot()
 {
-	std::string input;
+	std::string name;
+	int amount;
 
 	UserData userData;
 
-	std::cout << "What is the name of this Robot?\nName: ";
-	std::getline(std::cin, input);
-	userData.username = input;
+	std::cout << "What name do you want to give the robots?\nName: ";
+	std::getline(std::cin, name);
+	userData.username = name;
+
+	std::cout << "How many bots do you want to spawn?\nAmount: ";
+	std::cin >> amount;
+	userData.amount = amount;
+
+
+
+	std::string emp;
+	std::getline(std::cin, emp);
+	std::cout << "Press enter to confirm.....";
+
 
 	return userData;
 }
 
 
+void HandleClient(std::stop_token st, SOCKET client)
+{
+
+	char buffer[64];
+
+	int ackID = 0;
+
+	while (!st.stop_requested())
+	{
+		ackID++;
+
+		snprintf(buffer, sizeof(buffer), "MSG %s %d\n", "test", ackID);
+
+		if (send(client, buffer, strlen(buffer), 0) == SOCKET_ERROR)
+		{
+			std::cout << "Failed to send message...\n";
+		}
+		//else
+		//{
+		//	std::cout << "Message succefully send\n";
+		//}
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+	}
+
+
+	closesocket(client);
+	std::cout << "Client disconnected\n";
+}
 
 int main() {
 
@@ -76,15 +122,23 @@ int main() {
 
 	ClientHandler cH;
 
-	SOCKET sock = cH.ConnectClient(PORT, data.username);
+	std::vector<ClientContext> clients;
+	clients.reserve(data.amount);
 
-	char buffer[64];
+	for (int i = 0; i < data.amount; i++)
+	{
+		std::string name = std::format("{} {}\n", data.username, i);
 
-	int ackID = 0;
+		SOCKET client = cH.ConnectClient(PORT, name);
+		clients.push_back({
+			client,
+			std::jthread(HandleClient, client)
+			});
+	}
+
 
 	while (true)
 	{
-		ackID++;
 
 		std::string input;
 
@@ -96,33 +150,24 @@ int main() {
 
 		if (input == "QUIT")
 		{
-			if (send(sock, "QUIT\n", 4, 0) == SOCKET_ERROR)
+			for (auto& client : clients)
 			{
-				std::cout << "Failed to send message...\n";
-				continue;
+				if (send(client.socket, "QUIT\n", 4, 0) == SOCKET_ERROR)
+				{
+					std::cout << "Failed to send message...\n";
+					continue;
+				}
+				client.thread.request_stop();
 			}
-			break;
-		}
-		else
-		{
-			snprintf(buffer, sizeof(buffer), "MSG %s %d\n", input, ackID);
-		}
 
-		if (send(sock, buffer, strlen(buffer), 0) == SOCKET_ERROR)
-		{	
-			std::cout << "Failed to send message...\n";
-		}
-		else
-		{
-			std::cout << "Message succefully send\n";
+			clients.clear();
+			break;
 		}
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	}
 
-
 	std::cout << "Exiting server..\n";
-	closesocket(sock);
 	WSACleanup();
 
 	std::string t;
