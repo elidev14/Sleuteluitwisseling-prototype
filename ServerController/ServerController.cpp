@@ -6,28 +6,28 @@
 #include <ws2tcpip.h>
 #include <iostream>
 #include <string>
+#include "ProtocolHandler.h"
+#include <thread>
+#include <mutex>
+#include <chrono>
+#include <vector>
+#include <random>
 
 #pragma comment(lib,"ws2_32.lib")
 
+enum LockType {
+	None = 0,
+	Mutex = 1
+};
+
+using Ms = std::chrono::milliseconds;
+using us = std::chrono::microseconds;
+
 #define PORT 4080
 
-int main(void)
+
+SOCKET SetupServer()
 {
-	WSADATA wsaData;
-
-	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
-		fprintf(stderr, "WSAStartup failed.\n");
-		exit(1);
-	}
-
-	if (LOBYTE(wsaData.wVersion) != 2 ||
-		HIBYTE(wsaData.wVersion) != 2)
-	{
-		fprintf(stderr, "Version 2.2 of Winsock not available.\n");
-		WSACleanup();
-		exit(2);
-	}
-
 
 	SOCKET server = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
@@ -53,41 +53,76 @@ int main(void)
 		/* error */
 	}
 
-	std::cout << "listening... \n";
+	std::cout << "Server listening... \n";
+	return server;
+}
 
-
-	//Test
-	SOCKET client = accept(server, nullptr, nullptr);
-
-	const char* initMsg = "Hello.\n";
-	size_t msgSize = strlen(initMsg);
-
-	send(client, initMsg, msgSize, 0);
-
-	char buffer[512];
-	int bytesReceived = recv(client, buffer, sizeof(buffer) - 1, 0);
-
-	if (bytesReceived > 0)
+void HandleClient(SOCKET client)
+{
+	while (true)
 	{
-		buffer[bytesReceived] = '\0';
-		std::cout << "Received: " << buffer << std::endl;
-	}
-	else if (bytesReceived == 0)
-	{
-		std::cout << "Server closed the connection\n";
-	}
-	else
-	{
-		std::cerr << "recv failed\n";
+
+		std::string line = ProtocolHandler::readLine(client);
+		if (line.empty()) break;
+
+		ProtocolHandler::handleCommand(client, line);
 	}
 
 	closesocket(client);
+	std::cout << "Client disconnected\n";
+}
+
+
+int main(void)
+{
+	WSADATA wsaData;
+
+	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
+		fprintf(stderr, "WSAStartup failed.\n");
+		exit(1);
+	}
+
+	if (LOBYTE(wsaData.wVersion) != 2 ||
+		HIBYTE(wsaData.wVersion) != 2)
+	{
+		fprintf(stderr, "Version 2.2 of Winsock not available.\n");
+		WSACleanup();
+		exit(2);
+	}
+
+	//Setup the server
+	SOCKET server = SetupServer();
+
+	//Continuously running loop
+	while (true)
+	{
+		//Accepts new client
+		SOCKET client = accept(server, nullptr, nullptr);
+
+		//breaks if client 
+		if (client == INVALID_SOCKET)
+		{
+			int err = WSAGetLastError();
+
+			// accept interrupted by shutdown 
+			if (err == WSAENOTSOCK || err == WSAEINVAL)
+				break;
+
+			// keep server alive
+			std::cerr << "accept failed: " << err << "\n";
+			continue;
+		}
+		std::cout << "A connection has been made!\n";
+		std::thread(HandleClient, client).detach();
+	}
+
+
+
+	std::cout << "Closing server..\n";
+
 	closesocket(server);
 	WSACleanup();
 
 
-	std::string t;
-
-	std::getline(std::cin, t);
 	return 0;
 }

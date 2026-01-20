@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ECDHKEYEXCHANGE_HPP
+#define ECDHKEYEXCHANGE_HPP
 #include <openssl/evp.h>
 #include <openssl/rand.h>
 #include <cstring>
@@ -78,3 +79,4 @@ public:
 		return secret;
 	}
 };
+#endif

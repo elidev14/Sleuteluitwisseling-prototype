@@ -23,8 +23,5 @@
     <ClInclude Include="DiffieHellman.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ECDHKeyExchange.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

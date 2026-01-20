@@ -1,2 +1,5 @@
-﻿  The vcpkg manifest was disabled, but we found a manifest file in C:\Users\elija\OneDrive - Avans Hogeschool\lj2\Onderzoeksproject infrastrucuur\Sleuteluitwisseling\Sleuteluitwisseling-prototype\symmetrisch sleuteluitwisseling\. You may want to enable vcpkg manifests in your properties page or pass /p:VcpkgEnableManifest=true to the msbuild invocation.
-  symmetrisch sleuteluitwisseling.vcxproj -> C:\Users\elija\OneDrive - Avans Hogeschool\lj2\Onderzoeksproject infrastrucuur\Sleuteluitwisseling\Sleuteluitwisseling-prototype\x64\Debug\symmetrisch sleuteluitwisseling.exe
+﻿  The vcpkg manifest was disabled, but we found a manifest file in D:\Github_Projects\School\Sleuteluitwisseling-prototype\symmetrisch sleuteluitwisseling\. You may want to enable vcpkg manifests in your properties page or pass /p:VcpkgEnableManifest=true to the msbuild invocation.
+  symmetrisch sleuteluitwisseling.cpp
+  symmetrisch sleuteluitwisseling.vcxproj -> D:\Github_Projects\School\Sleuteluitwisseling-prototype\x64\Debug\symmetrisch sleuteluitwisseling.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.

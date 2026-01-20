@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "ServerController\\ServerController.vcxproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.vcxproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

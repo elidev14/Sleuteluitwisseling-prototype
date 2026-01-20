@@ -90,54 +90,7 @@ int main() {
 
 
 #ifdef USE_ECDH
-	std::cout << "=== ECDH with us of the X25519 curve ===\n";
-
-	ECDHKeyExchange A, B;
-
-	// Keypair generatie
-	tm.resetEvent();
-	A.generate_keypair();
-	B.generate_keypair();
-	microseconds genTime = tm.endEvent();
-
-	std::cout << "Keypairs gegenereerd in: "
-		<< genTime.count() << " microseconden\n";
-
-	// Public keys
-	size_t a_pub_len = 0, b_pub_len = 0;
-
-	unsigned char* a_pub = A.get_public_key(a_pub_len);
-	unsigned char* b_pub = B.get_public_key(b_pub_len);
-
-	// Shared secret
-	size_t secA_len = 0, secB_len = 0;
-
-	tm.resetEvent();
-	unsigned char* secA = A.compute_shared_secret(b_pub, b_pub_len, secA_len);
-	microseconds compATime = tm.endEvent();
-
-	tm.resetEvent();
-	unsigned char* secB = B.compute_shared_secret(a_pub, a_pub_len, secB_len);
-	microseconds compBTime = tm.endEvent();
-
-	std::cout << "Shared secret berekend in:\n";
-	std::cout << "  Alice: " << compATime.count() << " microseconden\n";
-	std::cout << "  Bob:   " << compBTime.count() << " microseconden\n";
-
-	// Verify
-	if (secA_len == secB_len && memcmp(secA, secB, secA_len) == 0)
-		std::cout << "\nAlice en Bob hebben dezelfde gedeelde sleutel\n";
-	else
-		std::cout << "\nSleutels komen niet overeen\n";
-
-	std::cout << "\nTotale tijd : "
-		<< tm.getTotal().count() << " microseconden\n";
-
-	OPENSSL_free(a_pub);
-	OPENSSL_free(b_pub);
-	OPENSSL_free(secA);
-	OPENSSL_free(secB);
-
+	
 #endif
 
 	std::cin.get();

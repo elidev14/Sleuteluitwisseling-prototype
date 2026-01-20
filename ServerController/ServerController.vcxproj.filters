@@ -18,9 +18,15 @@
     <ClCompile Include="ServerController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ProtocolHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

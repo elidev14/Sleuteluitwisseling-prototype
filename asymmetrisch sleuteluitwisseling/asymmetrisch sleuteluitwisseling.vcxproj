@@ -123,11 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\ServerController\Client.cpp" />
     <ClCompile Include="asymmetrisch sleuteluitwisseling.cpp" />
+    <ClCompile Include="ClientHandler.cpp" />
     <ClCompile Include="TimeMeasure.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClientHandler.h" />
+    <ClInclude Include="ECDHKeyExchange.h" />
     <ClInclude Include="TimeMeasure.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

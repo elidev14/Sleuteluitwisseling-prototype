@@ -1,13 +1,11 @@
 #ifndef TimeMeasure_HPP
 #define TimeMeasure_HPP
 #include <chrono>
-
-
 class TimeMeasure {
 
 
 public:
-	typedef std::chrono::microseconds microseconds;
+	typedef std::chrono::microseconds microSeconds;
 
 	TimeMeasure() {
 		resetEvent();
@@ -17,19 +15,19 @@ public:
 		start = std::chrono::high_resolution_clock::now();
 	}
 
-	microseconds endEvent() {
+	microSeconds endEvent() {
 		auto end = std::chrono::high_resolution_clock::now();
-		microseconds duration = std::chrono::duration_cast<microseconds>(end - start);
+		microSeconds duration = std::chrono::duration_cast<microSeconds>(end - start);
 		total += duration;
 		return duration;
 	}
 
-	microseconds getTotal() const {
+	microSeconds getTotal() const {
 		return total;
 	}
 
 private:
-	microseconds total{ 0 };
+	microSeconds total{ 0 };
 	std::chrono::high_resolution_clock::time_point start;
 };
 #endif // !TimeMeasure_HPP
