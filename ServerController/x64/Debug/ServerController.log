@@ -1,6 +1,10 @@
-﻿  ServerController.cpp
-D:\Github_Projects\School\Sleuteluitwisseling-prototype\ServerController\ServerController.cpp(46,41): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-D:\Github_Projects\School\Sleuteluitwisseling-prototype\ServerController\ServerController.cpp(54,27): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  ServerController.vcxproj -> D:\Github_Projects\School\Sleuteluitwisseling-prototype\x64\Debug\ServerController.exe
-  'pwsh.exe' is not recognized as an internal or external command,
-  operable program or batch file.
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets(2189,5): warning MSB9008: The referenced project ..\SecurityHandler\SecurityHandler.vcxproj does not exist.
+  ProtocolHandler.cpp
+  ServerController.cpp
+  tcphelpers.cpp
+  TimeMeasure.cpp
+  Generating Code...
+ServerController.obj : error LNK2019: unresolved external symbol "public: static class std::array<unsigned char,32> __cdecl SecurityLibrary::SecurityHandler::DeriveKeyHKDF(unsigned char const *,unsigned __int64)" (?DeriveKeyHKDF@SecurityHandler@SecurityLibrary@@SA?AV?$array@E$0CA@@std@@PEBE_K@Z) referenced in function "class std::array<unsigned char,32> __cdecl RunServerHandshake(unsigned __int64)" (?RunServerHandshake@@YA?AV?$array@E$0CA@@std@@_K@Z)
+ServerController.obj : error LNK2019: unresolved external symbol "public: static struct SecurityLibrary::GcmPacket __cdecl SecurityLibrary::SecurityHandler::AesGcmEncrypt(class std::array<unsigned char,32> const &,unsigned char const *,int)" (?AesGcmEncrypt@SecurityHandler@SecurityLibrary@@SA?AUGcmPacket@2@AEBV?$array@E$0CA@@std@@PEBEH@Z) referenced in function "void __cdecl HandleClient(unsigned __int64)" (?HandleClient@@YAX_K@Z)
+ServerController.obj : error LNK2019: unresolved external symbol "public: static bool __cdecl SecurityLibrary::SecurityHandler::AesGcmDecrypt(class std::array<unsigned char,32> const &,struct SecurityLibrary::GcmPacket const &,class std::vector<unsigned char,class std::allocator<unsigned char> > &)" (?AesGcmDecrypt@SecurityHandler@SecurityLibrary@@SA_NAEBV?$array@E$0CA@@std@@AEBUGcmPacket@2@AEAV?$vector@EV?$allocator@E@std@@@4@@Z) referenced in function "void __cdecl HandleClient(unsigned __int64)" (?HandleClient@@YAX_K@Z)
+D:\Github_Projects\School\Sleuteluitwisseling-prototype\x64\Debug\ServerController.exe : fatal error LNK1120: 3 unresolved externals
