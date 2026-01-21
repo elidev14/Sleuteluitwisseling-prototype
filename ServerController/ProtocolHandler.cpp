@@ -11,14 +11,7 @@ void ProtocolHandler::handleCommand(const SOCKET &client, const std::string& lin
 	std::string cmd;
 	iss >> cmd;
 
-	if (cmd == "CONNECT")
-	{
-		std::string username;
-		iss >> username;
-		send(client, "OK\n", 3, 0);
-		std::cout << username << " has connected!\n";
-	}
-	else if (cmd == "MSG")
+    if (cmd == "MSG")
 	{
 		std::string msg;
 		std::getline(iss, msg);

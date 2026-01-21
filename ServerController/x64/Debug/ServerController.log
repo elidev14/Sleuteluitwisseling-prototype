@@ -1,4 +1,6 @@
 ﻿  ServerController.cpp
+D:\Github_Projects\School\Sleuteluitwisseling-prototype\ServerController\ServerController.cpp(46,41): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\Github_Projects\School\Sleuteluitwisseling-prototype\ServerController\ServerController.cpp(54,27): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   ServerController.vcxproj -> D:\Github_Projects\School\Sleuteluitwisseling-prototype\x64\Debug\ServerController.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

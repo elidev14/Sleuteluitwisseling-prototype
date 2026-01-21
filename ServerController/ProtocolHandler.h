@@ -6,6 +6,8 @@
 #include <WinSock2.h>
 #include <sstream>
 #include <iostream>
+#include "ECDHKeyExchange.h"
+#include <vector>
 
 
 class ProtocolHandler

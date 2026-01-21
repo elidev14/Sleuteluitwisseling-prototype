@@ -12,6 +12,7 @@
 #include <chrono>
 #include <vector>
 #include <random>
+#include "ECDHKeyExchange.h"
 
 #pragma comment(lib,"ws2_32.lib")
 
@@ -20,10 +21,50 @@ enum LockType {
 	Mutex = 1
 };
 
+
+struct SessionContext {
+	size_t token;
+};
+
 using Ms = std::chrono::milliseconds;
 using us = std::chrono::microseconds;
 
 #define PORT 4080
+
+
+void RunServerHandshake(SOCKET client)
+{
+	ECDHKeyExchange ecdh;
+	ecdh.generate_keypair();
+
+	// Receive client public key length
+	size_t client_len = 0;
+	recv(client, (char*)&client_len, sizeof(client_len), MSG_WAITALL);
+
+	// Receive client public key
+	std::vector<unsigned char> client_pub(client_len);
+	recv(client, (char*)client_pub.data(), client_len, MSG_WAITALL);
+
+	// Send server public key length
+	size_t pub_len = 0;
+	unsigned char* pub = ecdh.get_public_key(pub_len);
+	send(client, (char*)&pub_len, sizeof(pub_len), 0);
+
+	//Send server public key
+	send(client, (char*)pub, pub_len, 0);
+
+	// Compute shared secret
+	size_t secret_len = 0;
+	unsigned char* secret =
+		ecdh.compute_shared_secret(
+			client_pub.data(),
+			client_pub.size(),
+			secret_len
+		);
+
+	std::cout << "[Server] Shared secret established\n";
+}
+
 
 
 SOCKET SetupServer()
@@ -59,6 +100,8 @@ SOCKET SetupServer()
 
 void HandleClient(SOCKET client)
 {
+	RunServerHandshake(client);
+
 	while (true)
 	{
 

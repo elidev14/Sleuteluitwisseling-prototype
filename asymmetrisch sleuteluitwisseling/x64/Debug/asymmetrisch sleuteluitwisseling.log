@@ -1,6 +1,0 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(538,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (asymmetrisch sleuteluitwisseling.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Sleuteluitwisseling.cpp
-D:\Github_Projects\School\Sleuteluitwisseling-prototype\asymmetrisch sleuteluitwisseling\Sleuteluitwisseling.cpp(87,34): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  asymmetrisch sleuteluitwisseling.vcxproj -> D:\Github_Projects\School\Sleuteluitwisseling-prototype\x64\Debug\Sleuteluitwisseling.exe
-  'pwsh.exe' is not recognized as an internal or external command,
-  operable program or batch file.

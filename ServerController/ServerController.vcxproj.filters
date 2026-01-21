@@ -29,5 +29,8 @@
     <ClInclude Include="ProtocolHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ECDHKeyExchange.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
