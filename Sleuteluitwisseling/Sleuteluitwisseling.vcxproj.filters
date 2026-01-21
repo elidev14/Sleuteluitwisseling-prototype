@@ -24,12 +24,18 @@
     <ClCompile Include="ClientHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tcphelpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TimeMeasure.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ClientHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tcphelpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

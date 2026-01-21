@@ -78,6 +78,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>D:\Github_Projects\School\Sleuteluitwisseling-prototype\SecurityLibrary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -105,6 +106,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>D:\Github_Projects\School\Sleuteluitwisseling-prototype\SecurityLibrary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,10 +130,12 @@
   <ItemGroup>
     <ClCompile Include="Sleuteluitwisseling.cpp" />
     <ClCompile Include="ClientHandler.cpp" />
+    <ClCompile Include="tcphelpers.cpp" />
     <ClCompile Include="TimeMeasure.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClientHandler.h" />
+    <ClInclude Include="tcphelpers.h" />
     <ClInclude Include="TimeMeasure.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

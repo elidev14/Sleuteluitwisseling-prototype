@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "symmetrisch sleuteluitwisse
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ServerController", "ServerController\ServerController.vcxproj", "{D5AB008F-317C-4AA8-885C-FF0DB91841C9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SecurityLibrary", "SecurityLibrary\SecurityLibrary.vcxproj", "{DB971A38-3772-43D2-B86F-9E1C39A71D54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{D5AB008F-317C-4AA8-885C-FF0DB91841C9}.Release|x64.Build.0 = Release|x64
 		{D5AB008F-317C-4AA8-885C-FF0DB91841C9}.Release|x86.ActiveCfg = Release|Win32
 		{D5AB008F-317C-4AA8-885C-FF0DB91841C9}.Release|x86.Build.0 = Release|Win32
+		{DB971A38-3772-43D2-B86F-9E1C39A71D54}.Debug|x64.ActiveCfg = Debug|x64
+		{DB971A38-3772-43D2-B86F-9E1C39A71D54}.Debug|x64.Build.0 = Debug|x64
+		{DB971A38-3772-43D2-B86F-9E1C39A71D54}.Debug|x86.ActiveCfg = Debug|Win32
+		{DB971A38-3772-43D2-B86F-9E1C39A71D54}.Debug|x86.Build.0 = Debug|Win32
+		{DB971A38-3772-43D2-B86F-9E1C39A71D54}.Release|x64.ActiveCfg = Release|x64
+		{DB971A38-3772-43D2-B86F-9E1C39A71D54}.Release|x64.Build.0 = Release|x64
+		{DB971A38-3772-43D2-B86F-9E1C39A71D54}.Release|x86.ActiveCfg = Release|Win32
+		{DB971A38-3772-43D2-B86F-9E1C39A71D54}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

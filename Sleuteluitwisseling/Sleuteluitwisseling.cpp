@@ -11,10 +11,13 @@
 #include <thread>
 #include <windows.h>
 #include <format>
-#include <algorithm>
 #include "ClientHandler.h"
-#include <functional>
-
+#include <mutex>
+#include <numeric>
+#include <vector>
+#include <latch>
+#include "SecurityHandler.h"
+#include "tcphelpers.h"
 
 #pragma comment(lib, "ws2_32.lib")
 
@@ -31,10 +34,12 @@ https://beej.us/guide/bgnet/html/#client-server-background
 
 using namespace std::chrono_literals;
 
-int ackID;
 
 
-bool IsRobotSet = false;
+std::mutex statsMutex;
+
+//List of totaltimes
+std::vector<TimeMeasure::microSeconds> handshakeTimes;
 
 struct UserData {
 	std::string username;
@@ -46,15 +51,21 @@ struct ClientContext {
 	std::jthread thread;
 };
 
+
+struct HandshakeResult {
+	TimeMeasure::microSeconds total;
+	std::array<unsigned char, 32> key; // AES-256 key
+};
+
 UserData SetupRobot()
 {
-	std::string name;
+	std::string name = "TESTBOT";
 	int amount;
 
 	UserData userData;
 
-	std::cout << "What name do you want to give the robots?\nName: ";
-	std::getline(std::cin, name);
+	//std::cout << "What name do you want to give the robots?\nName: ";
+	//std::getline(std::cin, name);
 	userData.username = name;
 
 	std::cout << "How many bots do you want to spawn?\nAmount: ";
@@ -65,40 +76,31 @@ UserData SetupRobot()
 
 	std::string emp;
 	std::getline(std::cin, emp);
-	std::cout << "Press enter to confirm.....";
 
 
 	return userData;
 }
 
 
-void HandleServerMessages(
-	std::stop_token st,
-	SOCKET client)
+
+HandshakeResult RunClientHandshake(SOCKET sock, std::string username)
 {
 
-	ClientHandler handler;
-	while (!st.stop_requested())
-	{
-		std::string msg = handler.ReadLine(client);
-		if (msg.empty())
-			break;
+	TimeMeasure tm;
 
-		std::cout << msg << '\n';
-	}
-}
-
-void RunClientHandshake(SOCKET sock)
-{
+	tm.resetEvent();
 	ECDHKeyExchange ecdh;
 	ecdh.generate_keypair();
+	TimeMeasure::microSeconds kpGenTime = tm.endEvent();
 
-	// Send public key length
+	tm.resetEvent();
 	size_t pub_len = 0;
 	unsigned char* pub = ecdh.get_public_key(pub_len);
+	TimeMeasure::microSeconds pubTime = tm.endEvent();
+
 	send(sock, (char*)&pub_len, sizeof(pub_len), 0);
 
-	// Send public key bytes (RAW)
+	tm.resetEvent();
 	send(sock, (char*)pub, pub_len, 0);
 
 	// Receive server public key length
@@ -108,44 +110,108 @@ void RunClientHandshake(SOCKET sock)
 	// Receive server public key
 	std::vector<unsigned char> server_pub(server_len);
 	recv(sock, (char*)server_pub.data(), server_len, MSG_WAITALL);
+	TimeMeasure::microSeconds rcvPubKeyTime = tm.endEvent();
 
-
+	tm.resetEvent();
 	// Compute shared secret
 	size_t secret_len = 0;
-	unsigned char* secret =
-		ecdh.compute_shared_secret(
-			server_pub.data(),
-			server_pub.size(),
-			secret_len
-		);
+	unsigned char* secret = ecdh.compute_shared_secret(
+		server_pub.data(),
+		server_pub.size(),
+		secret_len
+	);
+	TimeMeasure::microSeconds computeSharedKeyTime = tm.endEvent();
 
-	std::cout << "[Client] Shared secret established\n";
+
+
+	auto sessionKey = SecurityLibrary::SecurityHandler::DeriveKeyHKDF(secret, secret_len);
+
+	auto total = tm.getTotal();
+
+
+	/*std::cout << "[Client] Shared secret established\n";*/
+
+
+	//std::cout << "\n======= ROBOT: " << username << " =======\n" << "Handshake timing:\n"
+	//	<< "  - Keypair generation:    " << kpGenTime << "\n"
+	//	<< "  - Get public key:        " << pubTime << "\n"
+	//	<< "  - Receive server pubkey: " << rcvPubKeyTime << "\n"
+	//	<< "  - Compute shared secret: " << computeSharedKeyTime << "\n"
+	//	<< "  - total:                 " << total << "\n";
+
+	// Return both time and key
+	HandshakeResult result;
+	result.total = total;
+	result.key = sessionKey;
+
+	return result;
 }
 
 
 
-void HandleClient(std::stop_token st, SOCKET client, std::string username)
-{
+void HandleClient(std::stop_token st, SOCKET client, std::string username, std::latch& done) {
+	try {
+		// Krijg BEIDE de tijd EN de key terug
+		auto handshakeResult = RunClientHandshake(client, username);
 
-	RunClientHandshake(client);
+		// Update stats met de tijd
+		{
+			std::lock_guard lock(statsMutex);
+			handshakeTimes.push_back(handshakeResult.total);
+		}
 
-	std::jthread serverThread(HandleServerMessages, client);
+		// Gebruik de key voor encryptie
+		auto& key = handshakeResult.key;
 
-	char buffer[128];
+		// Stuur encrypted PING bericht
+		std::string message = "PING";
+		auto encryptedOut = SecurityLibrary::SecurityHandler::AesGcmEncrypt(
+			key,
+			(unsigned char*)message.data(),
+			(int)message.size()
+		);
 
-	while (!st.stop_requested())
-	{
-		snprintf(buffer, sizeof(buffer), "MSG %s\n", username.c_str());
-		send(client, buffer, strlen(buffer), 0);
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		if (!tcphelpers::SendGcmPacket(client, encryptedOut)) {
+			std::cerr << "[Client] Failed to send GCM packet\n";
+			closesocket(client);
+			done.count_down();
+			return;
+		}
+
+		//std::cout << "[Client] Sent encrypted: " << message << "\n";
+
+		// Ontvang encrypted response
+		SecurityLibrary::GcmPacket responseIn{};
+		if (!tcphelpers::RecvGcmPacket(client, responseIn)) {
+			std::cerr << "[Client] Failed to receive GCM packet\n";
+			closesocket(client);
+			done.count_down();
+			return;
+		}
+
+		// Decrypt de response
+		std::vector<unsigned char> decryptedResponse;
+		if (!SecurityLibrary::SecurityHandler::AesGcmDecrypt(key, responseIn, decryptedResponse)) {
+			std::cerr << "[Client] GCM decrypt failed\n";
+			closesocket(client);
+			done.count_down();
+			return;
+		}
+
+		std::string reply(decryptedResponse.begin(), decryptedResponse.end());
+		//std::cout << "[Client] Decrypted response: " << reply << "\n";
+
+		shutdown(client, SD_BOTH);
+		closesocket(client);
+		//std::cout << "[Client] Disconnected\n";
+
+	}
+	catch (const std::exception& e) {
+		std::cerr << "[Client] Exception: " << e.what() << "\n";
+		closesocket(client);
 	}
 
-	serverThread.request_stop();
-
-	shutdown(client, SD_BOTH);
-
-	closesocket(client);
-	std::cout << "Client disconnected\n";
+	done.count_down();
 }
 
 
@@ -173,20 +239,23 @@ int main() {
 	std::vector<ClientContext> clients;
 	clients.reserve(data.amount);
 
+	std::latch done(data.amount);
+
 	for (int i = 0; i < data.amount; i++)
 	{
-		std::string name = std::format("{} {}\n", data.username, i);
+		std::string name = std::format("{} {}", data.username, i);
 
 		SOCKET client = cH.ConnectClient(PORT);
 
 		clients.push_back({
 			client,
-			std::jthread(HandleClient, client, name)
+			std::jthread(HandleClient, client, name, std::ref(done))
 			});
 	}
 
+	done.wait();
 
-	while (true)
+	/*while (true)
 	{
 
 		std::string input;
@@ -199,32 +268,35 @@ int main() {
 
 		if (input == "QUIT")
 		{
-			for (auto& client : clients)
-			{
-				if (send(client.socket, "QUIT\n", 4, 0) == SOCKET_ERROR)
-				{
-					std::cout << "Failed to send message...\n";
-					continue;
-				}
-				client.thread.request_stop();
-			}
 
+			ExitClients(clients);
 			clients.clear();
 			break;
 		}
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-	}
+	}*/
+	std::cout << "Clients exiting server..\n";
 
-	std::cout << "Exiting server..\n";
 	WSACleanup();
+
+	auto sum = std::accumulate(
+		handshakeTimes.begin(),
+		handshakeTimes.end(),
+		std::chrono::microseconds{ 0 }
+	);
+
+	auto avg = sum / handshakeTimes.size();
+
+	std::cout << "\n\n========= ECDH =========\n";
+	std::cout << "Amount robots used: " << data.amount << "\n";
+	std::cout << "\Average time of key exchangement: " << avg << "\n";
+
 
 	std::string t;
 
 	std::getline(std::cin, t);
 
-	TimeMeasure tm;
-	TimeMeasure::microSeconds genTime = tm.endEvent();
 
 	return 0;
 }

@@ -13,6 +13,9 @@
 #include <vector>
 #include <random>
 #include "ECDHKeyExchange.h"
+#include "TimeMeasure.h"
+#include "tcphelpers.h"
+#include "SecurityHandler.h"
 
 #pragma comment(lib,"ws2_32.lib")
 
@@ -22,9 +25,11 @@ enum LockType {
 };
 
 
-struct SessionContext {
-	size_t token;
+struct HandshakeResult {
+	TimeMeasure::microSeconds total;
+	std::array<unsigned char, 32> key; // AES-256 key
 };
+
 
 using Ms = std::chrono::milliseconds;
 using us = std::chrono::microseconds;
@@ -32,37 +37,53 @@ using us = std::chrono::microseconds;
 #define PORT 4080
 
 
-void RunServerHandshake(SOCKET client)
+std::array<unsigned char, 32> RunServerHandshake(SOCKET client)
 {
 	ECDHKeyExchange ecdh;
 	ecdh.generate_keypair();
 
 	// Receive client public key length
 	size_t client_len = 0;
-	recv(client, (char*)&client_len, sizeof(client_len), MSG_WAITALL);
+	if (recv(client, (char*)&client_len, sizeof(client_len), MSG_WAITALL) <= 0) {
+		throw std::runtime_error("recv client_len failed");
+	}
+
 
 	// Receive client public key
 	std::vector<unsigned char> client_pub(client_len);
-	recv(client, (char*)client_pub.data(), client_len, MSG_WAITALL);
+	if (recv(client, (char*)client_pub.data(), (int)client_len, MSG_WAITALL) <= 0) {
+		throw std::runtime_error("recv client_pub failed");
+	}
 
 	// Send server public key length
 	size_t pub_len = 0;
 	unsigned char* pub = ecdh.get_public_key(pub_len);
-	send(client, (char*)&pub_len, sizeof(pub_len), 0);
+
+	if (send(client, (char*)&pub_len, sizeof(pub_len), 0) == SOCKET_ERROR) {
+		throw std::runtime_error("send pub_len failed");
+	}
 
 	//Send server public key
-	send(client, (char*)pub, pub_len, 0);
+	if (send(client, (char*)pub, (int)pub_len, 0) == SOCKET_ERROR) {
+		throw std::runtime_error("send pub failed");
+	}
+
 
 	// Compute shared secret
 	size_t secret_len = 0;
-	unsigned char* secret =
-		ecdh.compute_shared_secret(
-			client_pub.data(),
-			client_pub.size(),
-			secret_len
-		);
+	unsigned char* secret = ecdh.compute_shared_secret(client_pub.data(), client_pub.size(), secret_len);
+	if (!secret || secret_len == 0) {
+		throw std::runtime_error("compute_shared_secret failed");
+	}
+
+
+	auto sessionKey = SecurityLibrary::SecurityHandler::DeriveKeyHKDF(secret, secret_len);
+
+	// Als compute_shared_secret OPENSSL_malloc gebruikt: vrijgeven:
+	OPENSSL_free(secret);
 
 	std::cout << "[Server] Shared secret established\n";
+	return sessionKey;
 }
 
 
@@ -100,19 +121,39 @@ SOCKET SetupServer()
 
 void HandleClient(SOCKET client)
 {
-	RunServerHandshake(client);
+	try {
+		auto key = RunServerHandshake(client);
 
-	while (true)
-	{
+		SecurityLibrary::GcmPacket in{};
 
-		std::string line = ProtocolHandler::readLine(client);
-		if (line.empty()) break;
+		if (!tcphelpers::RecvGcmPacket(client, in)) {
+			std::cerr << "[Server] Failed to receive GCM packet\n";
+			closesocket(client);
+			return;
+		}
 
-		ProtocolHandler::handleCommand(client, line);
+		std::vector<unsigned char> pt;
+		if (!SecurityLibrary::SecurityHandler::AesGcmDecrypt(key, in, pt)) {
+			std::cerr << "[Server] GCM decrypt failed\n";
+			closesocket(client);
+			return;
+		}
+
+		std::string msg(pt.begin(), pt.end());
+		std::cout << "[Server] Decrypted: " << msg << "\n";
+
+		std::string reply = (msg == "PING") ? "PONG" : "ERR";
+		auto out = SecurityLibrary::SecurityHandler::AesGcmEncrypt(key, (unsigned char*)reply.data(), (int)reply.size());
+		tcphelpers::SendGcmPacket(client, out);
+
+		// Daarna kun je sluiten of teruggaan naar readLine()
+		closesocket(client);
+		std::cout << "Client disconnected\n";
 	}
-
-	closesocket(client);
-	std::cout << "Client disconnected\n";
+	catch (const std::exception& e) {
+		std::cerr << "[Server] Exception: " << e.what() << "\n";
+		closesocket(client);
+	}
 }
 
 

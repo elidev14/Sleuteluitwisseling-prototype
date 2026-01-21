@@ -76,6 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\Github_Projects\School\Sleuteluitwisseling-prototype\SecurityLibrary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -102,6 +103,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\Github_Projects\School\Sleuteluitwisseling-prototype\SecurityLibrary;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -125,11 +127,20 @@
   <ItemGroup>
     <ClCompile Include="ProtocolHandler.cpp" />
     <ClCompile Include="ServerController.cpp" />
+    <ClCompile Include="tcphelpers.cpp" />
+    <ClCompile Include="TimeMeasure.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h" />
     <ClInclude Include="ECDHKeyExchange.h" />
     <ClInclude Include="ProtocolHandler.h" />
+    <ClInclude Include="tcphelpers.h" />
+    <ClInclude Include="TimeMeasure.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SecurityHandler\SecurityHandler.vcxproj">
+      <Project>{db971a38-3772-43d2-b86f-9e1c39a71d54}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
