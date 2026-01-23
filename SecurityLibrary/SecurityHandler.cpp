@@ -27,7 +27,7 @@ namespace SecurityLibrary
 		if (EVP_PKEY_CTX_set_hkdf_md(ctx, EVP_sha256()) <= 0)
 			throw std::runtime_error("HKDF set md failed");
 
-		// No salt (acceptable for ECDHE; can be added later)
+		// No salt (acceptable for ECDHE can be added later)
 		if (EVP_PKEY_CTX_set1_hkdf_key(ctx, secret, (int)secret_len) <= 0)
 			throw std::runtime_error("HKDF set key failed");
 

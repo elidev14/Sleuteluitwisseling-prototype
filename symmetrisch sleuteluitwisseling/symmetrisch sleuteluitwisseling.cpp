@@ -42,7 +42,6 @@ int main() {
 
 	TimeMeasure tm;
 
-#ifdef USE_CLASSIC_DH
 	std::cout << "=== Classic Diffie Hellman ===\n";
 
 	DiffieHellman DH_A, DH_B;
@@ -84,14 +83,6 @@ int main() {
 
 	OPENSSL_free(secretA);
 	OPENSSL_free(secretB);
-
-#endif
-
-
-
-#ifdef USE_ECDH
-	
-#endif
 
 	std::cin.get();
 	return 0;

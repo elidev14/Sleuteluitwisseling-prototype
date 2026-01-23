@@ -151,7 +151,7 @@ HandshakeResult RunClientHandshake(SOCKET sock, std::string username)
 
 void HandleClient(std::stop_token st, SOCKET client, std::string username, std::latch& done) {
 	try {
-		// Krijg BEIDE de tijd EN de key terug
+		// Krijg   tijd en de key terug
 		auto handshakeResult = RunClientHandshake(client, username);
 
 		// Update stats met de tijd
@@ -163,7 +163,7 @@ void HandleClient(std::stop_token st, SOCKET client, std::string username, std::
 		// Gebruik de key voor encryptie
 		auto& key = handshakeResult.key;
 
-		// Stuur encrypted PING bericht
+		// Stuur encrypted ping bericht
 		std::string message = "PING";
 		auto encryptedOut = SecurityLibrary::SecurityHandler::AesGcmEncrypt(
 			key,
@@ -280,22 +280,33 @@ int main() {
 
 	WSACleanup();
 
-	auto total = std::accumulate(
-		handshakeTimes.begin(),
-		handshakeTimes.end(),
-		std::chrono::microseconds{ 0 }
-	);
-
-	auto avg = total / handshakeTimes.size();
+	auto total = std::accumulate(handshakeTimes.begin(),handshakeTimes.end(),std::chrono::microseconds{ 0 });
 	auto min = *std::min_element(handshakeTimes.begin(), handshakeTimes.end());
+	auto avg = total / handshakeTimes.size();
 	auto max = *std::max_element(handshakeTimes.begin(), handshakeTimes.end());
+
+	auto total_time_execution = total.count();
+	auto min_time_execution = min.count();
+	auto avg_time_execution = avg.count();
+	auto max_time_execution = max.count();
 
 	std::cout << "\n\n========= ECDH =========\n";
 	std::cout << "Amount robots used: " << data.amount << "\n";
-	std::cout << "\Total time execution: " << total << "\n";
-	std::cout << "\Min time of key exchangement: " << min << "\n";
-	std::cout << "\Average time of key exchangement: " << avg << "\n";
-	std::cout << "\Max time of key exchangement: " << max << "\n";
+
+	auto format_time = [](long long microseconds) -> std::string {
+		std::ostringstream oss;
+		oss << microseconds << " microseconds";
+		if (microseconds >= 1000) {
+			double milliseconds = microseconds / 1000.0;
+			oss << " (" << std::fixed << std::setprecision(3) << milliseconds << " ms)";
+		}
+		return oss.str();
+		};
+
+	std::cout << "Total cumulative handshake time: " << format_time(total_time_execution) << "\n";
+	std::cout << "Min time of key exchangement: " << format_time(min_time_execution) << "\n";
+	std::cout << "Average time of key exchangement: " << format_time(avg_time_execution) << "\n";
+	std::cout << "Max time of key exchangement: " << format_time(max_time_execution) << "\n";
 
 
 

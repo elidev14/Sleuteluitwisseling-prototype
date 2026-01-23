@@ -100,19 +100,18 @@ SOCKET SetupServer()
 
 	if (server == INVALID_SOCKET)
 	{
-		/* error */
+		std::cerr << "[Server] Exception: " << "An error occured with the client" << "\n";
 	}
 
 	if (bind(server, (sockaddr*)&addr, sizeof(addr)) == SOCKET_ERROR)
 	{
-		/* error */
+		std::cerr << "[Server] Exception: " << "An error occured with the client" << "\n";
 	}
 
 
 	if (listen(server, SOMAXCONN) == SOCKET_ERROR)
 	{
-
-		/* error */
+		std::cerr << "[Server] Exception: " << "An error occured with the client" << "\n";
 	}
 
 	std::cout << "Server listening... \n";
