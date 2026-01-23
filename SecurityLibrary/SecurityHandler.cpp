@@ -1,9 +1,7 @@
 // SecurityHandler.cpp : Defines the functions for the static library.
 //
-
 #include "SecurityHandler.h"
-#include "framework.h"
-#include "pch.h"
+
 
 /* 
  support sources: 

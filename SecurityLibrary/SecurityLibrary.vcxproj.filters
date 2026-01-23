@@ -18,18 +18,9 @@
     <ClCompile Include="SecurityHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\bazdabab\pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SecurityHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\bazdabab\pch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\bazdabab\framework.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

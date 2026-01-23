@@ -138,6 +138,11 @@
     <ClInclude Include="tcphelpers.h" />
     <ClInclude Include="TimeMeasure.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SecurityLibrary\SecurityLibrary.vcxproj">
+      <Project>{db971a38-3772-43d2-b86f-9e1c39a71d54}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

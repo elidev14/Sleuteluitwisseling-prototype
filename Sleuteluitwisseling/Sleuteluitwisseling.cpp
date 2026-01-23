@@ -16,7 +16,7 @@
 #include <numeric>
 #include <vector>
 #include <latch>
-#include "SecurityHandler.h"
+//#include "SecurityHandler.h"
 #include "tcphelpers.h"
 
 #pragma comment(lib, "ws2_32.lib")
@@ -280,17 +280,23 @@ int main() {
 
 	WSACleanup();
 
-	auto sum = std::accumulate(
+	auto total = std::accumulate(
 		handshakeTimes.begin(),
 		handshakeTimes.end(),
 		std::chrono::microseconds{ 0 }
 	);
 
-	auto avg = sum / handshakeTimes.size();
+	auto avg = total / handshakeTimes.size();
+	auto min = *std::min_element(handshakeTimes.begin(), handshakeTimes.end());
+	auto max = *std::max_element(handshakeTimes.begin(), handshakeTimes.end());
 
 	std::cout << "\n\n========= ECDH =========\n";
 	std::cout << "Amount robots used: " << data.amount << "\n";
+	std::cout << "\Total time execution: " << total << "\n";
+	std::cout << "\Min time of key exchangement: " << min << "\n";
 	std::cout << "\Average time of key exchangement: " << avg << "\n";
+	std::cout << "\Max time of key exchangement: " << max << "\n";
+
 
 
 	std::string t;

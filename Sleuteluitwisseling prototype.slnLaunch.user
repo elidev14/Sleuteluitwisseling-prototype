@@ -7,7 +7,7 @@
         "Action": "Start"
       },
       {
-        "Path": "asymmetrisch sleuteluitwisseling\\asymmetrisch sleuteluitwisseling.vcxproj",
+        "Path": "Sleuteluitwisseling\\Sleuteluitwisseling.vcxproj",
         "Action": "Start"
       }
     ]

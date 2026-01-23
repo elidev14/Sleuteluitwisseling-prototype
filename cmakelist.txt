@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 project(Sleuteluitwisseling prototype)
 
-add_subdirectory(asymmetrisch sleuteluitwisseling)
-add_subdirectory(symmetrisch sleuteluitwisseling)
+add_subdirectory(Sleuteluitwisseling)
+add_subdirectory(ServerController)
+add_subdirectory(SecurityLibrary)
