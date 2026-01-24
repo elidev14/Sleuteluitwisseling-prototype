@@ -18,6 +18,7 @@
 #include <latch>
 //#include "SecurityHandler.h"
 #include "tcphelpers.h"
+#include <algorithm>
 
 #pragma comment(lib, "ws2_32.lib")
 
@@ -218,6 +219,11 @@ void HandleClient(std::stop_token st, SOCKET client, std::string username, std::
 int main() {
 
 	WSADATA wsaData;
+	TimeMeasure tm;
+
+
+
+
 
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
 		fprintf(stderr, "WSAStartup failed.\n");
@@ -233,6 +239,8 @@ int main() {
 	}
 
 	UserData data = SetupRobot();
+
+	tm.resetEvent();
 
 	ClientHandler cH;
 
@@ -277,8 +285,9 @@ int main() {
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	}*/
 	std::cout << "Clients exiting server..\n";
-
+	TimeMeasure::microSeconds endExec = tm.endEvent();
 	WSACleanup();
+
 
 	auto total = std::accumulate(handshakeTimes.begin(),handshakeTimes.end(),std::chrono::microseconds{ 0 });
 	auto min = *std::min_element(handshakeTimes.begin(), handshakeTimes.end());
@@ -289,6 +298,8 @@ int main() {
 	auto min_time_execution = min.count();
 	auto avg_time_execution = avg.count();
 	auto max_time_execution = max.count();
+
+
 
 	std::cout << "\n\n========= ECDH =========\n";
 	std::cout << "Amount robots used: " << data.amount << "\n";
@@ -308,6 +319,16 @@ int main() {
 	std::cout << "Average time of key exchangement: " << format_time(avg_time_execution) << "\n";
 	std::cout << "Max time of key exchangement: " << format_time(max_time_execution) << "\n";
 
+	if (handshakeTimes.size() > 1)
+	{
+		std::sort(handshakeTimes.begin(), handshakeTimes.end());
+		auto median = handshakeTimes[handshakeTimes.size() / 2];
+		auto median_time_execution = median.count();
+
+		std::cout << "Median time of key exchangement: " << format_time(median_time_execution) << "\n";
+	}
+	std::cout << "\n\n==================\n";
+	std::cout << "\nProgram execution time: " << format_time(endExec.count()) << "\n";
 
 
 	std::string t;

@@ -3,12 +3,23 @@
   "WorkspaceRootPath": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F8E794BC-E785-4ABD-A8C1-8FC3BB75FE6D}|symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8E794BC-E785-4ABD-A8C1-8FC3BB75FE6D}|symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.vcxproj|solutionrelative:symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1AF3535E-25AF-4355-B444-B0815BCFDB35}|Sleuteluitwisseling\\Sleuteluitwisseling.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\Sleuteluitwisseling\\Sleuteluitwisseling.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{1AF3535E-25AF-4355-B444-B0815BCFDB35}|Sleuteluitwisseling\\Sleuteluitwisseling.vcxproj|solutionrelative:Sleuteluitwisseling\\Sleuteluitwisseling.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\include\\vector||{3B902123-F8A7-4915-9F01-361F908088D0}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5AB008F-317C-4AA8-885C-FF0DB91841C9}|ServerController\\ServerController.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\ProtocolHandler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D5AB008F-317C-4AA8-885C-FF0DB91841C9}|ServerController\\ServerController.vcxproj|solutionrelative:ServerController\\ProtocolHandler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5AB008F-317C-4AA8-885C-FF0DB91841C9}|ServerController\\ServerController.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\Client.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D5AB008F-317C-4AA8-885C-FF0DB91841C9}|ServerController\\ServerController.vcxproj|solutionrelative:ServerController\\Client.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8E794BC-E785-4ABD-A8C1-8FC3BB75FE6D}|symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8E794BC-E785-4ABD-A8C1-8FC3BB75FE6D}|symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.vcxproj|solutionrelative:symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1AF3535E-25AF-4355-B444-B0815BCFDB35}|Sleuteluitwisseling\\Sleuteluitwisseling.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\Sleuteluitwisseling\\ClientHandler.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -17,10 +28,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DB971A38-3772-43D2-B86F-9E1C39A71D54}|SecurityLibrary\\SecurityLibrary.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\SecurityLibrary\\SecurityHandler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DB971A38-3772-43D2-B86F-9E1C39A71D54}|SecurityLibrary\\SecurityLibrary.vcxproj|solutionrelative:SecurityLibrary\\SecurityHandler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D5AB008F-317C-4AA8-885C-FF0DB91841C9}|ServerController\\ServerController.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\Client.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D5AB008F-317C-4AA8-885C-FF0DB91841C9}|ServerController\\ServerController.vcxproj|solutionrelative:ServerController\\Client.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D5AB008F-317C-4AA8-885C-FF0DB91841C9}|ServerController\\ServerController.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\TimeMeasure.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -37,10 +44,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D5AB008F-317C-4AA8-885C-FF0DB91841C9}|ServerController\\ServerController.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\ECDHKeyExchange.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{D5AB008F-317C-4AA8-885C-FF0DB91841C9}|ServerController\\ServerController.vcxproj|solutionrelative:ServerController\\ECDHKeyExchange.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D5AB008F-317C-4AA8-885C-FF0DB91841C9}|ServerController\\ServerController.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\ProtocolHandler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D5AB008F-317C-4AA8-885C-FF0DB91841C9}|ServerController\\ServerController.vcxproj|solutionrelative:ServerController\\ProtocolHandler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D5AB008F-317C-4AA8-885C-FF0DB91841C9}|ServerController\\ServerController.vcxproj|D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\ServerController.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -81,24 +84,22 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "symmetrisch sleuteluitwisseling.cpp",
-              "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp",
-              "RelativeDocumentMoniker": "symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp",
-              "ToolTip": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp",
-              "RelativeToolTip": "symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-01-23T18:11:13.18Z",
+              "DocumentIndex": 1,
+              "Title": "vector",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\include\\vector",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\include\\vector",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAjwDYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-24T17:58:01.48Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Client.h",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\Client.h",
               "RelativeDocumentMoniker": "ServerController\\Client.h",
@@ -106,25 +107,11 @@
               "RelativeToolTip": "ServerController\\Client.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-23T17:58:52.605Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T17:58:52.605Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TimeMeasure.h",
-              "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\TimeMeasure.h",
-              "RelativeDocumentMoniker": "ServerController\\TimeMeasure.h",
-              "ToolTip": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\TimeMeasure.h",
-              "RelativeToolTip": "ServerController\\TimeMeasure.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-23T17:58:51.417Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "tcphelpers.h",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\tcphelpers.h",
               "RelativeDocumentMoniker": "ServerController\\tcphelpers.h",
@@ -132,12 +119,11 @@
               "RelativeToolTip": "ServerController\\tcphelpers.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-23T17:58:50.46Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T17:58:50.46Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "ProtocolHandler.h",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\ProtocolHandler.h",
               "RelativeDocumentMoniker": "ServerController\\ProtocolHandler.h",
@@ -145,12 +131,11 @@
               "RelativeToolTip": "ServerController\\ProtocolHandler.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-23T17:58:49.333Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T17:58:49.333Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "ECDHKeyExchange.h",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\ECDHKeyExchange.h",
               "RelativeDocumentMoniker": "ServerController\\ECDHKeyExchange.h",
@@ -158,12 +143,11 @@
               "RelativeToolTip": "ServerController\\ECDHKeyExchange.h",
               "ViewState": "AgIAACIAAAAAAAAAAAAowFEAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-23T17:58:25.779Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T17:58:25.779Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 2,
               "Title": "ProtocolHandler.cpp",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\ProtocolHandler.cpp",
               "RelativeDocumentMoniker": "ServerController\\ProtocolHandler.cpp",
@@ -171,12 +155,11 @@
               "RelativeToolTip": "ServerController\\ProtocolHandler.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-01-23T17:58:21.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T17:58:21.525Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "TimeMeasure.h",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\Sleuteluitwisseling\\TimeMeasure.h",
               "RelativeDocumentMoniker": "Sleuteluitwisseling\\TimeMeasure.h",
@@ -184,12 +167,11 @@
               "RelativeToolTip": "Sleuteluitwisseling\\TimeMeasure.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-23T17:56:29.535Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T17:56:29.535Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "ClientHandler.h",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\Sleuteluitwisseling\\ClientHandler.h",
               "RelativeDocumentMoniker": "Sleuteluitwisseling\\ClientHandler.h",
@@ -197,12 +179,11 @@
               "RelativeToolTip": "Sleuteluitwisseling\\ClientHandler.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-23T17:55:56.995Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T17:55:56.995Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "SecurityHandler.cpp",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\SecurityLibrary\\SecurityHandler.cpp",
               "RelativeDocumentMoniker": "SecurityLibrary\\SecurityHandler.cpp",
@@ -210,25 +191,48 @@
               "RelativeToolTip": "SecurityLibrary\\SecurityHandler.cpp",
               "ViewState": "AgIAAD0AAAAAAAAAAAAowEoAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-01-23T11:35:12.363Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T11:35:12.363Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Sleuteluitwisseling.cpp",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\Sleuteluitwisseling\\Sleuteluitwisseling.cpp",
               "RelativeDocumentMoniker": "Sleuteluitwisseling\\Sleuteluitwisseling.cpp",
               "ToolTip": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\Sleuteluitwisseling\\Sleuteluitwisseling.cpp",
               "RelativeToolTip": "Sleuteluitwisseling\\Sleuteluitwisseling.cpp",
-              "ViewState": "AgIAAP0AAAAAAAAAAAAAwCYBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANYAAAAAAAAAAAAAwPIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-01-23T12:10:23.015Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 4,
+              "Title": "symmetrisch sleuteluitwisseling.cpp",
+              "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp",
+              "RelativeDocumentMoniker": "symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp",
+              "ToolTip": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp",
+              "RelativeToolTip": "symmetrisch sleuteluitwisseling\\symmetrisch sleuteluitwisseling.cpp",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-23T18:11:13.18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TimeMeasure.h",
+              "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\TimeMeasure.h",
+              "RelativeDocumentMoniker": "ServerController\\TimeMeasure.h",
+              "ToolTip": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\TimeMeasure.h",
+              "RelativeToolTip": "ServerController\\TimeMeasure.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-23T17:58:51.417Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "tcphelpers.h",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\Sleuteluitwisseling\\tcphelpers.h",
               "RelativeDocumentMoniker": "Sleuteluitwisseling\\tcphelpers.h",
@@ -236,12 +240,11 @@
               "RelativeToolTip": "Sleuteluitwisseling\\tcphelpers.h",
               "ViewState": "AgIAABEAAAAAAAAAAAAowEAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-23T17:55:58.581Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T17:55:58.581Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "TimeMeasure.cpp",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\Sleuteluitwisseling\\TimeMeasure.cpp",
               "RelativeDocumentMoniker": "Sleuteluitwisseling\\TimeMeasure.cpp",
@@ -249,12 +252,11 @@
               "RelativeToolTip": "Sleuteluitwisseling\\TimeMeasure.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-01-23T17:55:52.89Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T17:55:52.89Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "ClientHandler.cpp",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\Sleuteluitwisseling\\ClientHandler.cpp",
               "RelativeDocumentMoniker": "Sleuteluitwisseling\\ClientHandler.cpp",
@@ -262,12 +264,11 @@
               "RelativeToolTip": "Sleuteluitwisseling\\ClientHandler.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-01-23T17:55:14.953Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T17:55:14.953Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "tcphelpers.cpp",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\Sleuteluitwisseling\\tcphelpers.cpp",
               "RelativeDocumentMoniker": "Sleuteluitwisseling\\tcphelpers.cpp",
@@ -275,12 +276,11 @@
               "RelativeToolTip": "Sleuteluitwisseling\\tcphelpers.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-01-23T17:55:13.068Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T17:55:13.068Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Microsoft.Common.CurrentVersion.targets",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
@@ -290,7 +290,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "ServerController.cpp",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\ServerController\\ServerController.cpp",
               "RelativeDocumentMoniker": "ServerController\\ServerController.cpp",
@@ -298,12 +298,11 @@
               "RelativeToolTip": "ServerController\\ServerController.cpp",
               "ViewState": "AgIAAKMAAAAAAAAAAAAowNIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-01-23T11:39:42.604Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T11:39:42.604Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "SecurityHandler.h",
               "DocumentMoniker": "D:\\Github_Projects\\School\\Sleuteluitwisseling-prototype\\SecurityLibrary\\SecurityHandler.h",
               "RelativeDocumentMoniker": "SecurityLibrary\\SecurityHandler.h",
